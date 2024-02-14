@@ -32,8 +32,8 @@ website:
         - text: "---"
         - section: "🥇 **Maths**"
           contents:
-            - text: "1. Linear Programming"
-              href: 
+            - text: "1. Fisher Information"
+              href: posts/fisher_information/index.html
         - text: "---"
         - section: "🗣️ **Large language models**"
           contents:
@@ -47,6 +47,6 @@ format:
     css: styles.css
     toc: true
     toc-depth: 2
-    toc-title: "**Sections"
+    toc-title: "**Sections**"
 
 
