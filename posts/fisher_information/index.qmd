@@ -1,0 +1,26 @@
+---
+title: ""
+author: "Guillaume Kunsch"
+date: "2024-02-14"
+categories: [news]
+bibliography: references.bib
+link-citations: true
+draft: true
+---
+
+# Intro
+
+Suppose we have samples from a distribution where the form is known but the
+parameters are not. For example, we might know the distribution is a Gaussian,
+but we don't know the value of the mean or variance. We want to know
+how difficult the parameters are to estimate given the samples. One way to
+answer this question is to estimate the amount of information that the samples
+contain about the parameters. The more information the samples contain about
+the parameters, the easier they are to estimate. Conversely, the less
+information the samples contain about the parameters, the harder they are to
+estimate.
+
+Fisher information is one way to measure how much information the samples
+contain about the parameters. There are alternatives, but Fisher information is
+the most well known. Before we get to the formal definition, which takes some
+time to get familiar with, let's motivate Fisher information with an example.
