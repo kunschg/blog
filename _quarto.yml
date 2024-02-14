@@ -28,21 +28,21 @@ website:
         - section: "🌐 **Hyperbolic embeddings**"
           contents:
             - text: "1. To-Do"
-              href: posts/hello_world.html
+              href: posts/hello_world/index.html
         - text: "---"
         - section: "🥇 **Maths stuff**"
           contents:
             - text: "1. Linear Programming"
-              href: posts/hello_world.html
+              href: posts/hello_world/index.html
         - text: "---"
         - section: "🗣️ **Large language models**"
           contents:
             - text: "1. Intro "
-              href: posts/hello_world.html
+              href: posts/hello_world/index.html
 
 format:
   html:
-    theme: cosmo
+    theme: flatly
     css: styles.css
 
 
