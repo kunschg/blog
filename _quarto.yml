@@ -3,7 +3,9 @@ project:
   output-dir: docs
 
 website:
-  title: "personal_blog"
+  title: "A technical ML blog"
+  site-url: https://kunschg.github.io/blog/
+  description: "A great sample blog"
   navbar:
     right:
       - about.qmd
@@ -11,6 +13,8 @@ website:
         href: https://github.com/
       - icon: twitter
         href: https://twitter.com
+      - icon: rss
+        href: index.xml
 format:
   html:
     theme: cosmo
