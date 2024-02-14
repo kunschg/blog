@@ -2,10 +2,10 @@
 title: ""
 author: "Guillaume Kunsch"
 date: "2024-02-14"
-categories: [news]
+categories: [Maths]
 bibliography: references.bib
 link-citations: true
-draft: true
+draft: false
 ---
 
 # Intro
