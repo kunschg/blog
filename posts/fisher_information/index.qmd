@@ -6,8 +6,6 @@ categories: [Maths]
 bibliography: references.bib
 link-citations: true
 draft: false
-bread-crumbs: false
-page-navigation: false
 ---
 
 # Intro

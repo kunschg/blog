@@ -17,6 +17,7 @@ website:
         href: index.xml
   page-footer: "Copyright 2023, Guillaume Kunsch" 
   google-analytics: "G-F7QP106X85"
+  bread-crumbs: false
 
   sidebar:
     - id: articles
