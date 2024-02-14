@@ -18,6 +18,28 @@ website:
   page-footer: "Copyright 2023, Guillaume Kunsch" 
   google-analytics: "G-F7QP106X85"
 
+  sidebar:
+    - id: articles
+      title: "Articles"
+      style: "floating"
+      collapse-level: 2
+      align: left
+      contents:
+        - section: "🌐 **Hyperbolic embeddings**"
+          contents:
+            - text: "1. To-Do"
+              href: posts/hello_world.html
+        - text: "---"
+        - section: "🥇 **Maths stuff**"
+          contents:
+            - text: "1. Linear Programming"
+              href: posts/hello_world.html
+        - text: "---"
+        - section: "🗣️ **Large language models**"
+          contents:
+            - text: "1. Intro "
+              href: posts/hello_world.html
+
 format:
   html:
     theme: cosmo
