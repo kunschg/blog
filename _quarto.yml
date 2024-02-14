@@ -1,20 +1,23 @@
 project:
   type: website
-  output-dir: docs
 
 website:
   title: "A technical ML blog"
   site-url: https://kunschg.github.io/blog/
-  description: "A great sample blog"
+  description: "Tutorials, articles and random thoughts on AI landscape, from maths to LLM"
   navbar:
     right:
-      - about.qmd
+      - text: "{{< fa address-card >}} About"
+        href: https://gkunsch.fr/
       - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+        href: https://github.com/kunschg
+      - icon: linkedin
+        href: https://www.linkedin.com/in/guillaume-kunsch-1146bb151/
       - icon: rss
         href: index.xml
+  page-footer: "{{< fa regular copyright >}} Copyright 2023, Guillaume Kunsch" 
+  google-analytics: "G-F7QP106X85"
+
 format:
   html:
     theme: cosmo
