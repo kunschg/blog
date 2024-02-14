@@ -27,18 +27,18 @@ website:
       contents:
         - section: "🌐 **Hyperbolic embeddings**"
           contents:
-            - text: "1. To-Do"
-              href: posts/hello_world/index.html
+            - text: "1. Non-euclidean geometry"
+              href: 
         - text: "---"
-        - section: "🥇 **Maths stuff**"
+        - section: "🥇 **Maths**"
           contents:
             - text: "1. Linear Programming"
-              href: posts/hello_world/index.html
+              href: 
         - text: "---"
         - section: "🗣️ **Large language models**"
           contents:
-            - text: "1. Intro "
-              href: posts/hello_world/index.html
+            - text: "1. What are Transformers ?"
+              href: 
 
 format:
   html:

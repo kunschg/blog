@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Fisher Information"
 author: "Guillaume Kunsch"
 date: "2024-02-14"
 categories: [Maths]

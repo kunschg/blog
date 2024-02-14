@@ -1,5 +1,6 @@
 ---
-title: "A technical ML blog"
+title: "All Articles"
+description: "Tutorials, articles and random thoughts on AI landscape, from Maths to LLM"
 listing:
   contents: posts
   sort: "date desc"
