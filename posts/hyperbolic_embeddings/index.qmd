@@ -25,7 +25,7 @@ There are essentially two ways of replacing Euclid's last postulate:
 * either you decide to assume that there are an infinite number of lines, in which case you're in hyperbolic geometry
 * or you decide to assume that there are no lines at all, in which case you're in spherical geometry.
 
-![The different types of geometry. Source: [Cuemath](https://www.cuemath.com/geometry/) ](Images/geometry_type.png){width=70%}
+![The different types of geometry. Source: [Cuemath](https://www.cuemath.com/geometry/) ](images/geometry_type.png){width=70%}
 
 When you think about it, the Earth's surface defines a spherical geometry, so it shouldn't be too difficult to represent visually. However, this is not entirely true, and I encourage you to watch this [video](https://www.youtube.com/watch?v=zQo_S3yNa2w&ab_channel=CodeParade) which goes a little further and is very well illustrated. Note also that local spherical geometry can be approximated by the classical 2D plane of Euclidean geometry, which is of paramount importance in the mathematical study of this geometry. 
 
@@ -72,18 +72,18 @@ To assess the quality of the embeddings, we use the mean approximation error (MA
 
 ::: {#fig-euclidian layout="[10,-2,15]" layout-valign="center"}
 
-![Embeddings](images/embeddings%20euclidien.png)
+![Embeddings](images/embeddings_euclidian.png)
 
-![Metrics](images/metrics%20euclidien.png)
+![Metrics](images/metrics_euclidian.png)
 
 Results with Euclidian space
 :::
 
 ::: {#fig-hyperbolic layout="[10,-2,15]" layout-valign="center"}
 
-![Embeddings](images/embeddings%20hyperbolic.png)
+![Embeddings](images/embeddings_hyperbolic.png)
 
-![Metrics](images/metrics%20hyperbolic.png)
+![Metrics](images/metrics_hyperbolic.png)
 
 Results with hyperbolic space
 :::
