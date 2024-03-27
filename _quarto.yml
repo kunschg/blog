@@ -18,10 +18,6 @@ website:
   page-footer: "Copyright 2023, Guillaume Kunsch" 
   google-analytics: "G-F7QP106X85"
   bread-crumbs: false
-  comments: 
-    utterances:
-      repo: blog
-      theme: github-light
 
   sidebar:
     - id: articles
@@ -47,5 +43,6 @@ format:
     toc: true
     toc-depth: 3
     toc-title: "**Sections**"
-
-
+    comments:
+      utterances:
+        repo: kunschg/blog
