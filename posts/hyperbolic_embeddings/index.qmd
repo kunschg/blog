@@ -70,6 +70,23 @@ In line with the method of [@nickel2017poincare], we will train our model on tra
 We use a contrastive loss function to pairwise cluster hypernymy while rejecting non-neighbors. 
 To assess the quality of the embeddings, we use the mean approximation error (MAP), which indicates how similar the neighborhood of each node in the embedding space is to that of the tree. 
 
+::: {#fig-euclidian layout="[10,-2,15]" layout-valign="center"}
+
+![Embeddings](images/embeddings%20euclidien.png)
+
+![Metrics](images/metrics%20euclidien.png)
+
+Results with Euclidian space
+:::
+
+::: {#fig-hyperbolic layout="[10,-2,15]" layout-valign="center"}
+
+![Embeddings](images/embeddings%20hyperbolic.png)
+
+![Metrics](images/metrics%20hyperbolic.png)
+
+Results with hyperbolic space
+:::
 
 
 We can see that the MAP achieved for hyperbolic space is considerably higher than that for Euclidean space. 
