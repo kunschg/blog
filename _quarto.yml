@@ -38,7 +38,6 @@ website:
         - section: "🛠️ **Maths**"
           contents:
             - text: "1. Fisher Information"
-              href: 
 
 format:
   html:
