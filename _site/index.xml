@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>A technical ML blog</title>
+<link>https://kunschg.github.io/blog/</link>
+<atom:link href="https://kunschg.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
+<description>Tutorials, articles and random thoughts on AI landscape, from Maths to LLM</description>
+<generator>quarto-1.4.549</generator>
+<lastBuildDate>Mon, 25 Mar 2024 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Hyperbolic embeddings</title>
+  <dc:creator>Guillaume Kunsch</dc:creator>
+  <link>https://kunschg.github.io/blog/posts/hyperbolic_embeddings/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="intro" class="level1">
+<h1>Intro</h1>
+<p>When we think of embeddings, we usually think of Euclidean embeddings, because most of the research carried out on embeddings has been done within the framework of Euclidean geometry. However, Euclidean geometry is only a particular type of geometry where certain axioms are assumed to be true - Euclid’s axioms. If the last axiom - which states that given a line a and a point that is not on that line, there exists only one line parallel to the given line that contains the point - is replaced, we can in fact construct different types of geometries with interesting properties.</p>
+<p>In this article, we’ll take a quick look at the different types of geometry without going into details - that will require an article of its own - and see how and when we can use them in machine learning.</p>
+</section>
+<section id="non-euclidean-geometry-101" class="level1">
+<h1>Non-Euclidean Geometry 101</h1>
+<section id="different-types-of-geometry" class="level2">
+<h2 class="anchored" data-anchor-id="different-types-of-geometry">Different types of geometry</h2>
+<p>There are essentially two ways of replacing Euclid’s last postulate:</p>
+<ul>
+<li>either you decide to assume that there are an infinite number of lines, in which case you’re in hyperbolic geometry</li>
+<li>or you decide to assume that there are no lines at all, in which case you’re in spherical geometry.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kunschg.github.io/blog/posts/hyperbolic_embeddings/images/geometry_type.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>The different types of geometry. Source: <a href="https://www.cuemath.com/geometry/">Cuemath</a></figcaption>
+</figure>
+</div>
+<p>When you think about it, the Earth’s surface defines a spherical geometry, so it shouldn’t be too difficult to represent visually. However, this is not entirely true, and I encourage you to watch this <a href="https://www.youtube.com/watch?v=zQo_S3yNa2w&amp;ab_channel=CodeParade">video</a> which goes a little further and is very well illustrated. Note also that local spherical geometry can be approximated by the classical 2D plane of Euclidean geometry, which is of paramount importance in the mathematical study of this geometry.</p>
+<p>Hyperbolic geometry is more difficult to represent visually. There are different models, all of them being equivalents. When you think of hyperbolic geometry, think of a space that grows exponentially faster than Euclidean geometry.</p>
+</section>
+<section id="why-not-stick-to-euclidean" class="level2">
+<h2 class="anchored" data-anchor-id="why-not-stick-to-euclidean">Why not stick to Euclidean ?</h2>
+<p>If Euclidean space is the embedding space par excellence, why should we be interested in non-Euclidean geometry?</p>
+<p>Let’s remember that the aim of an embedding method is to organize symbolic objects - e.g.&nbsp;words, entities, concepts - in such a way that their similarity or distance in the embedding space reflects their semantic similarity. Although embedding methods have proved effective in many applications, they suffer from a fundamental limitation: their ability to model complex models is intrinsically limited by the dimensionality of the embedding space. As a result, it has often been the case that a very large number of dimensions - several hundreds or more - are required to model complex relationships correctly in Euclidean geometry.</p>
+<p>However, it has been studied and theoretically proven that spherical or hyperbolic geometry can be better equipped mathematically to represent certain relationships using lower dimensions. For example, it has been shown that any finite tree can be embedded in a finite hyperbolic space in such a way that distances are preserved approximately <span class="citation" data-cites="gromov1987hyperbolic">(Gromov 1987)</span>. On the other hand, Bourgain’s theorem <span class="citation" data-cites="linial1995geometry">(Linial, London, and Rabinovich 1995)</span> shows that Euclidean space does not allow such low distortion for trees, even using an unlimited number of dimensions.</p>
+</section>
+</section>
+<section id="what-about-their-usefulness-in-machine-learning" class="level1">
+<h1>What about their usefulness in Machine Learning ?</h1>
+<section id="hierarchical-representation" class="level2">
+<h2 class="anchored" data-anchor-id="hierarchical-representation">Hierarchical representation</h2>
+<p>From now on, for the sake of simplicity, we’ll focus on hyperbolic geometry.</p>
+<p><span class="citation" data-cites="nickel2017poincare">(Nickel and Kiela 2017)</span> has shown that hyperbolic geometry can be used to account for the hierarchical representation of tree data. They use the Mammal dataset, which contains relationships between entities such as “Mammal &gt; Ungulate”, which represents that Ungulate is a subclass of Mammal. Informally, hyperbolic space can be seen as a continuous version of trees and, as such, is naturally equipped to model hierarchical structures.</p>
+</section>
+<section id="which-model-for-hyperbolic-geometry" class="level2">
+<h2 class="anchored" data-anchor-id="which-model-for-hyperbolic-geometry">Which model for hyperbolic geometry ?</h2>
+<p>As previously mentioned, there are several models for hyperbolic geometry. Generally speaking, the two most widely used models in machine learning are the Poincaré model and the hyperboloid model. You can transform coordinates from one to the other, although the hyperboloid has one extra dimension, and they are equivalent.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kunschg.github.io/blog/posts/hyperbolic_embeddings/images/projection.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Projection of the Poincaré ball onto the hyperboloid. Source : <a href="https://en.wikipedia.org/wiki/Hyperboloid_model">Wikipedia</a></figcaption>
+</figure>
+</div>
+<p>Although <span class="citation" data-cites="nickel2018learning">(Nickel and Kiela 2018)</span>’s work suggests that the hyperboloid is more stable than the Poincaré model, we’ll be conducting experiments using the Poincaré model as it’s more appropriate for visual results for a blog post.</p>
+</section>
+<section id="quick-experiments" class="level2">
+<h2 class="anchored" data-anchor-id="quick-experiments">Quick experiments</h2>
+<p>We will rely on a synthetic tree generated using <a href="https://networkx.org/">NetworkX</a> with a depth of size 10 and a branching factor of 2. It containq approxiamtely 2,000 nodes. In line with the method of <span class="citation" data-cites="nickel2017poincare">(Nickel and Kiela 2017)</span>, we will train our model on the transitive graph closure, i.e.&nbsp;hypernymy.</p>
+<p>We use a contrastive loss function to pairwise cluster hypernymy while rejecting non-neighbors. To assess the quality of the embeddings, we use the mean approximation error (MAP), which indicates how similar the neighborhood of each node in the embedding space is to that of the tree.</p>
+<div id="fig-euclidian" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-euclidian-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 37.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kunschg.github.io/blog/posts/hyperbolic_embeddings/images/embeddings_euclidian.png" class="img-fluid figure-img"></p>
+<figcaption>Embeddings</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 7.4%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 55.6%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kunschg.github.io/blog/posts/hyperbolic_embeddings/images/metrics_euclidian.png" class="img-fluid figure-img"></p>
+<figcaption>Metrics</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-euclidian-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Results with Euclidian space
+</figcaption>
+</figure>
+</div>
+<div id="fig-hyperbolic" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hyperbolic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 37.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kunschg.github.io/blog/posts/hyperbolic_embeddings/images/embeddings_hyperbolic.png" class="img-fluid figure-img"></p>
+<figcaption>Embeddings</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 7.4%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 55.6%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kunschg.github.io/blog/posts/hyperbolic_embeddings/images/metrics_hyperbolic.png" class="img-fluid figure-img"></p>
+<figcaption>Metrics</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hyperbolic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Results with hyperbolic space
+</figcaption>
+</figure>
+</div>
+<p>We can see that the MAP achieved for hyperbolic space is considerably higher than that for Euclidean space. In addition, the tree hierarchy is visible in the hyperbolic geometry.</p>
+</section>
+</section>
+<section id="conclusion-and-food-for-thought" class="level1">
+<h1>Conclusion and food for thought</h1>
+<p>Hyperbolic geometry is an excellent tool for embedding tree structures or other graphs that exhibit a hierarchical structure. Some work <span class="citation" data-cites="gu2018learning">(Gu et al. 2018)</span> even suggests that they can be composed to achieve embeddings in the product of hyperbolic, spherical and Euclidean spaces!</p>
+<p>However, using them is no free-lunch and has a few drawbacks:</p>
+<ul>
+<li>Firstly, because they’re a different kind of geometry, you can’t combine them directly with the classic +, x, ÷ used in Euclidean geometry. You need more complicated formulas to do this.</li>
+<li>Secondly, they are subject to instabilities (gradient explosion) and require special attention such as burn-in periods or learning rate adjustment.</li>
+<li>Thirdly, they are probably not designed for all types of hierarchy. In my own experience, they seem to shine with deep trees (depths greater than 15) where Euclidean space begins to be overwhelmed.</li>
+</ul>
+<p>In short, like any technique, there’s a trade-off between the accuracy you want to achieve and the technical difficulties and debt if you want to incorporate them into an ML system.</p>
+<p>I hope you’ve enjoyed it!</p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="ref-gromov1987hyperbolic" class="csl-entry">
+Gromov, Mikhael. 1987. <span>“Hyperbolic Groups.”</span> In <em>Essays in Group Theory</em>, 75–263. Springer.
+</div>
+<div id="ref-gu2018learning" class="csl-entry">
+Gu, Albert, Frederic Sala, Beliz Gunel, and Christopher Ré. 2018. <span>“Learning Mixed-Curvature Representations in Product Spaces.”</span> In <em>International Conference on Learning Representations</em>.
+</div>
+<div id="ref-linial1995geometry" class="csl-entry">
+Linial, Nathan, Eran London, and Yuri Rabinovich. 1995. <span>“The Geometry of Graphs and Some of Its Algorithmic Applications.”</span> <em>Combinatorica</em> 15: 215–45.
+</div>
+<div id="ref-nickel2017poincare" class="csl-entry">
+Nickel, Maximillian, and Douwe Kiela. 2017. <span>“Poincar<span>é</span> Embeddings for Learning Hierarchical Representations.”</span> <em>Advances in Neural Information Processing Systems</em> 30.
+</div>
+<div id="ref-nickel2018learning" class="csl-entry">
+———. 2018. <span>“Learning Continuous Hierarchies in the Lorentz Model of Hyperbolic Geometry.”</span> In <em>International Conference on Machine Learning</em>, 3779–88. PMLR.
+</div>
+</div></section></div> ]]></description>
+  <category>Machine Learning</category>
+  <guid>https://kunschg.github.io/blog/posts/hyperbolic_embeddings/</guid>
+  <pubDate>Mon, 25 Mar 2024 23:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

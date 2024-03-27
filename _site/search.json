@@ -1,0 +1,81 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "All Articles",
+    "section": "",
+    "text": "Hyperbolic embeddings\n\n\n\n\n\n\n\n\n\n\n\nMar 26, 2024\n\n\nGuillaume Kunsch\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/hyperbolic_embeddings/index.html",
+    "href": "posts/hyperbolic_embeddings/index.html",
+    "title": "Hyperbolic embeddings",
+    "section": "",
+    "text": "When we think of embeddings, we usually think of Euclidean embeddings, because most of the research carried out on embeddings has been done within the framework of Euclidean geometry. However, Euclidean geometry is only a particular type of geometry where certain axioms are assumed to be true - Euclid’s axioms. If the last axiom - which states that given a line a and a point that is not on that line, there exists only one line parallel to the given line that contains the point - is replaced, we can in fact construct different types of geometries with interesting properties.\nIn this article, we’ll take a quick look at the different types of geometry without going into details - that will require an article of its own - and see how and when we can use them in machine learning.",
+    "crumbs": [
+      "About",
+      "🤖 **Machine Learning**",
+      "1. Hyperbolic embeddings"
+    ]
+  },
+  {
+    "objectID": "posts/hyperbolic_embeddings/index.html#different-types-of-geometry",
+    "href": "posts/hyperbolic_embeddings/index.html#different-types-of-geometry",
+    "title": "Hyperbolic embeddings",
+    "section": "Different types of geometry",
+    "text": "Different types of geometry\nThere are essentially two ways of replacing Euclid’s last postulate:\n\neither you decide to assume that there are an infinite number of lines, in which case you’re in hyperbolic geometry\nor you decide to assume that there are no lines at all, in which case you’re in spherical geometry.\n\n\n\n\nThe different types of geometry. Source: Cuemath\n\n\nWhen you think about it, the Earth’s surface defines a spherical geometry, so it shouldn’t be too difficult to represent visually. However, this is not entirely true, and I encourage you to watch this video which goes a little further and is very well illustrated. Note also that local spherical geometry can be approximated by the classical 2D plane of Euclidean geometry, which is of paramount importance in the mathematical study of this geometry.\nHyperbolic geometry is more difficult to represent visually. There are different models, all of them being equivalents. When you think of hyperbolic geometry, think of a space that grows exponentially faster than Euclidean geometry.",
+    "crumbs": [
+      "About",
+      "🤖 **Machine Learning**",
+      "1. Hyperbolic embeddings"
+    ]
+  },
+  {
+    "objectID": "posts/hyperbolic_embeddings/index.html#why-not-stick-to-euclidean",
+    "href": "posts/hyperbolic_embeddings/index.html#why-not-stick-to-euclidean",
+    "title": "Hyperbolic embeddings",
+    "section": "Why not stick to Euclidean ?",
+    "text": "Why not stick to Euclidean ?\nIf Euclidean space is the embedding space par excellence, why should we be interested in non-Euclidean geometry?\nLet’s remember that the aim of an embedding method is to organize symbolic objects - e.g. words, entities, concepts - in such a way that their similarity or distance in the embedding space reflects their semantic similarity. Although embedding methods have proved effective in many applications, they suffer from a fundamental limitation: their ability to model complex models is intrinsically limited by the dimensionality of the embedding space. As a result, it has often been the case that a very large number of dimensions - several hundreds or more - are required to model complex relationships correctly in Euclidean geometry.\nHowever, it has been studied and theoretically proven that spherical or hyperbolic geometry can be better equipped mathematically to represent certain relationships using lower dimensions. For example, it has been shown that any finite tree can be embedded in a finite hyperbolic space in such a way that distances are preserved approximately (Gromov 1987). On the other hand, Bourgain’s theorem (Linial, London, and Rabinovich 1995) shows that Euclidean space does not allow such low distortion for trees, even using an unlimited number of dimensions.",
+    "crumbs": [
+      "About",
+      "🤖 **Machine Learning**",
+      "1. Hyperbolic embeddings"
+    ]
+  },
+  {
+    "objectID": "posts/hyperbolic_embeddings/index.html#hierarchical-representation",
+    "href": "posts/hyperbolic_embeddings/index.html#hierarchical-representation",
+    "title": "Hyperbolic embeddings",
+    "section": "Hierarchical representation",
+    "text": "Hierarchical representation\nFrom now on, for the sake of simplicity, we’ll focus on hyperbolic geometry.\n(Nickel and Kiela 2017) has shown that hyperbolic geometry can be used to account for the hierarchical representation of tree data. They use the Mammal dataset, which contains relationships between entities such as “Mammal &gt; Ungulate”, which represents that Ungulate is a subclass of Mammal. Informally, hyperbolic space can be seen as a continuous version of trees and, as such, is naturally equipped to model hierarchical structures.",
+    "crumbs": [
+      "About",
+      "🤖 **Machine Learning**",
+      "1. Hyperbolic embeddings"
+    ]
+  },
+  {
+    "objectID": "posts/hyperbolic_embeddings/index.html#which-model-for-hyperbolic-geometry",
+    "href": "posts/hyperbolic_embeddings/index.html#which-model-for-hyperbolic-geometry",
+    "title": "Hyperbolic embeddings",
+    "section": "Which model for hyperbolic geometry ?",
+    "text": "Which model for hyperbolic geometry ?\nAs previously mentioned, there are several models for hyperbolic geometry. Generally speaking, the two most widely used models in machine learning are the Poincaré model and the hyperboloid model. You can transform coordinates from one to the other, although the hyperboloid has one extra dimension, and they are equivalent.\n\n\n\nProjection of the Poincaré ball onto the hyperboloid. Source : Wikipedia\n\n\nAlthough (Nickel and Kiela 2018)’s work suggests that the hyperboloid is more stable than the Poincaré model, we’ll be conducting experiments using the Poincaré model as it’s more appropriate for visual results for a blog post.",
+    "crumbs": [
+      "About",
+      "🤖 **Machine Learning**",
+      "1. Hyperbolic embeddings"
+    ]
+  },
+  {
+    "objectID": "posts/hyperbolic_embeddings/index.html#quick-experiments",
+    "href": "posts/hyperbolic_embeddings/index.html#quick-experiments",
+    "title": "Hyperbolic embeddings",
+    "section": "Quick experiments",
+    "text": "Quick experiments\nWe will rely on a synthetic tree generated using NetworkX with a depth of size 10 and a branching factor of 2. It containq approxiamtely 2,000 nodes. In line with the method of (Nickel and Kiela 2017), we will train our model on the transitive graph closure, i.e. hypernymy.\nWe use a contrastive loss function to pairwise cluster hypernymy while rejecting non-neighbors. To assess the quality of the embeddings, we use the mean approximation error (MAP), which indicates how similar the neighborhood of each node in the embedding space is to that of the tree.\n\n\n\n\n\n\n\n\nEmbeddings\n\n\n\n\n \n\n\n\n\n\nMetrics\n\n\n\n\n\n\nFigure 1: Results with Euclidian space\n\n\n\n\n\n\n\n\n\n\n\nEmbeddings\n\n\n\n\n \n\n\n\n\n\nMetrics\n\n\n\n\n\n\nFigure 2: Results with hyperbolic space\n\n\n\nWe can see that the MAP achieved for hyperbolic space is considerably higher than that for Euclidean space. In addition, the tree hierarchy is visible in the hyperbolic geometry.",
+    "crumbs": [
+      "About",
+      "🤖 **Machine Learning**",
+      "1. Hyperbolic embeddings"
+    ]
+  }
+]
