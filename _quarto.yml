@@ -18,6 +18,10 @@ website:
   page-footer: "Copyright 2023, Guillaume Kunsch" 
   google-analytics: "G-F7QP106X85"
   bread-crumbs: false
+  comments: 
+    utterances:
+      repo: blog
+      theme: github-light
 
   sidebar:
     - id: articles
@@ -26,20 +30,15 @@ website:
       collapse-level: 2
       align: left
       contents:
-        - section: "🌐 **Hyperbolic embeddings**"
+        - section: "🤖 **Machine Learning**"
           contents:
-            - text: "1. Non-euclidean geometry"
-              href: 
+            - text: "1. Hyperbolic embeddings"
+              href: posts/hyperbolic_embeddings/index.html
         - text: "---"
-        - section: "🥇 **Maths**"
+        - section: "🛠️ **Maths**"
           contents:
             - text: "1. Fisher Information"
               href: posts/fisher_information/index.html
-        - text: "---"
-        - section: "🗣️ **Large language models**"
-          contents:
-            - text: "1. What are Transformers ?"
-              href: 
 
 format:
   html:
@@ -47,7 +46,7 @@ format:
     theme: flatly
     css: styles.css
     toc: true
-    toc-depth: 2
+    toc-depth: 3
     toc-title: "**Sections**"
 
 
